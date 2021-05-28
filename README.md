@@ -1,6 +1,6 @@
 # UWA-Data-Homework-Final_Project
 
-## What you mean ##
+## What do you mean ##
 
 *******************
 # Team members
