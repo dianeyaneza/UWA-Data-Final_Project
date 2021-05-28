@@ -1,6 +1,6 @@
-var mymap = L.map('map').setView([-31.95, 115.86], 13);
+var mymap = L.map('map').setView([10.82, 21.80], 2.5);
 
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+var streets = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     id: 'mapbox/streets-v11',
@@ -9,28 +9,28 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: 'pk.eyJ1IjoiZGlhbmV5YW5lemEiLCJhIjoiY2tuZnZvenkyMXZyeDJvazg3NHlvNGJoMSJ9.b2Mbk6QyGrdG8GIqJr1lNw'
 }).addTo(mymap);
 
-var perth = L.marker([-31.95, 115.86]).bindPopup('This is Perth.'),
-    johannesburg = L.marker([-26.20, 28.04]).bindPopup('This is Johannesburg.'),
-    havana = L.marker([23.11, -82.36]).bindPopup('This is Havana');
-
-var cities = L.layerGroup([perth, johannesburg, havana]);
-
-var grayscale = L.tileLayer(mapboxUrl, {id: 'map', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution}),
-    streets = L.tileLayer(mapboxUrl, {id: 'map', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution});
-
-var map = L.map('map', {
-    center: [-31.95, 115.86],
-    zoom: 10,
-    layers: [grayscale, cities]
+var grayscale = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
+    attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
+    tileSize: 512,
+    maxZoom: 18,
+    zoomOffset: -1,
+    id: "mapbox/dark-v10",
+    accessToken: pk.eyJ1IjoiZGlhbmV5YW5lemEiLCJhIjoiY2tuZnZvenkyMXZyeDJvazg3NHlvNGJoMSJ9.b2Mbk6QyGrdG8GIqJr1lNw
 });
 
+var cities = L.layerGroup();
+L.marker([-31.95, 115.86]).bindPopup('This is Perth.').addTo(cities),
+L.marker([-26.20, 28.04]).bindPopup('This is Johannesburg.').addTo(cities),
+L.marker([23.11, -82.36]).bindPopup('This is Havana').addTo(cities);
+
 var baseMaps = {
-    "Grayscale": grayscale,
-    "Streets": streets
+    "Streets": streets,
+    "Grayscale": grayscale
+    
 };
 
 var overlayMaps = {
     "Cities": cities
 };
 
-L.control.layers(baseMaps, overlayMaps).addTo(map);
+L.control.layers(baseMaps, overlayMaps).addTo(mymap);

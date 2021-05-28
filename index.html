@@ -19,18 +19,42 @@
     <body style="background-color: rgb(250, 250, 250)">
 
         <div class="navbox" id="NavBox">
-            <div class="navItem"><p id="About" onclick="AboutPage()">About</p></div>
-            <div class="navItem"><h1>What Do You Mean</h1></div>
+            <div class="navItem"><p id="Profile" onclick="ProfilePage()">Profile</p></div>
+            <div class="navItem"><h1> What Do You Mean</h1></div>
             <div class="navItem"><p id="Results" onclick="ResultsPage()">Results</p></div>
         </div>
 
-        <!-- The div that holds our map -->
+        <!-- overlay -->
+        <div id="ProfileOverlay" onclick="off()">
+            <div id="text">Overlay Text</div>
+        </div>
+        <div id="ResultsOverlay" onclick="off()">
+            <div id="text">Overlay Text</div>
+        </div>
+
+        
+        <!-- map -->
         <br>
         <div class="col-md-12">
             <div id="map"></div>
         </div>
 
         <script type="text/javascript" src="assets/js/app.js"></script>
+        
+        <!-- overlay script -->
+        <script>
+            function ProfilePage() {
+                document.getElementById("ProfileOverlay").style.display = "block";
+            }
+            function ResultsPage() {
+                document.getElementById("ResultsOverlay").style.display = "block";
+            }
+            function off() {
+                document.getElementById("ProfileOverlay").style.display = "none";
+                document.getElementById("ResultsOverlay").style.display = "none";
+            }
+
+        </script>
     
     </body>
 

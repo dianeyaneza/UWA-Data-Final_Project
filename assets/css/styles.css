@@ -48,7 +48,7 @@
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    margin: 0px;
+    margin-left: 5%;
   }
   
   .navbox .navItem p {
@@ -57,38 +57,11 @@
     margin: 0px;
   }
   
-  /* .navbox .navItem:first-of-type {
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-  }
-  
-  .navbox .navItem:last-of-type {
-    -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
-  }
-  
-  .navbox .navItem:first-child > span {
-    -webkit-box-pack: right;
-        -ms-flex-pack: right;
-            justify-content: right;
-    margin-right: auto;
-  }
-  
-  .navbox .navItem:last-child > span {
-    -webkit-box-pack: left;
-        -ms-flex-pack: left;
-            justify-content: left;
-    margin-right: 20px;
-    margin-left: auto;
-  } */
-  
   .navbox #Results {
     text-align: right;
   }
   
-  .navbox #About {
+  .navbox #Profile {
     text-align: left;
     margin-left: 70px;
   }
@@ -98,8 +71,40 @@
     position: absolute;
     width: 98%;
     height: 600px;
-    align-content: center;
-    /* float: inline-start; */
-    /* display: flex; */
-    /* text-align: center; */
+    z-index: 1;
 }
+
+#ResultsOverlay {
+    position: absolute;
+    margin-left: 50%;
+    margin-top: 105px;
+    display: none;
+    width: 50%;
+    height: 83%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 11;
+    cursor: pointer;
+}
+#ProfileOverlay {
+    position: absolute;
+    margin-left: 0%;
+    margin-top: 105px;
+    display: none;
+    width: 50%;
+    height: 83%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 11;
+    cursor: pointer;
+}
+
+  
+#text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
+
