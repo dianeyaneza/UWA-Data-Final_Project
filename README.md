@@ -13,8 +13,8 @@
 
 - This project will use: 
     * Machine Learning;
-    * Python Flask, powered API, HTML/CSS, Javascript and SQL and Heroku.
-    * A combination of Plotly and Leaflet. 
+    * Python Flask, powered API, HTML/CSS, Javascript and SQL and Heroku;
+    * Leaflet. 
 - This project will have a dataset that contains 4 years of the Australian population's:
     * Anxiety
     * Depression
