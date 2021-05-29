@@ -1,0 +1,110 @@
+/* .navbar-expand {
+    each $breakpoint in map-keys($grid-breakpoints) {
+        $next: breakpoint-next($breakpoint, $grid-breakpoints);
+        $infix: breakpoint-infix($next, $grid-breakpoints);
+    }
+} */
+
+.navbox {
+    position: absolute;
+    height: 120px;
+    top: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: baseline;
+        -ms-flex-align: baseline;
+            align-items: baseline;
+    width: 90%;
+    z-index: 999;
+    padding-top: 30px;
+    pointer-events: none;
+  }
+  
+  .navbox h1 {
+    font-family:'Trebuchet MS';
+    font-weight: 500;
+    margin: 0px;
+    font-size: 3vw;
+    pointer-events: all;
+  }
+  
+  .navbox p {
+    pointer-events: all;
+  }
+  
+  .navbox p:hover {
+    text-decoration: underline;
+  }
+  
+  .navbox .navItem {
+    font-family: 'Trebuchet MS';
+    font-weight: 500;
+    font-size: 1.4vw;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-left: 5%;
+  }
+  
+  .navbox .navItem p {
+    text-align: center;
+    cursor: pointer;
+    margin: 0px;
+  }
+  
+  .navbox #Results {
+    text-align: right;
+  }
+  
+  .navbox #Profile {
+    text-align: left;
+    margin-left: 70px;
+  }
+
+#map { 
+    margin-top: 80px;
+    position: absolute;
+    width: 98%;
+    height: 600px;
+    z-index: 1;
+}
+
+#ResultsOverlay {
+    position: absolute;
+    margin-left: 50%;
+    margin-top: 105px;
+    display: none;
+    width: 50%;
+    height: 83%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 11;
+    cursor: pointer;
+}
+#ProfileOverlay {
+    position: absolute;
+    margin-left: 0%;
+    margin-top: 105px;
+    display: none;
+    width: 50%;
+    height: 83%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 11;
+    cursor: pointer;
+}
+
+  
+#text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
+
