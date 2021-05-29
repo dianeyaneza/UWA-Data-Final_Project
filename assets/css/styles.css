@@ -22,25 +22,39 @@
     z-index: 999;
     padding-top: 30px;
     pointer-events: none;
-  }
+}
   
-  .navbox h1 {
+.navbox h1 {
     font-family:'Trebuchet MS';
     font-weight: 500;
     margin: 0px;
     font-size: 3vw;
     pointer-events: all;
-  }
+}
+
+.navbox .navItem h1 {
+    text-align: center;
+    cursor: pointer;
+    margin: 0px;
+}
   
-  .navbox p {
+.navbox h1 {
     pointer-events: all;
-  }
+}
+
+.navbox h1:hover {
+    color: #777;
+}
+
+.navbox p {
+    pointer-events: all;
+}
   
-  .navbox p:hover {
-    text-decoration: underline;
-  }
+.navbox p:hover {
+    color: #777;
+}
   
-  .navbox .navItem {
+.navbox .navItem {
     font-family: 'Trebuchet MS';
     font-weight: 500;
     font-size: 1.4vw;
@@ -49,22 +63,22 @@
         -ms-flex-pack: center;
             justify-content: center;
     margin-left: 5%;
-  }
+}
   
-  .navbox .navItem p {
+.navbox .navItem p {
     text-align: center;
     cursor: pointer;
     margin: 0px;
-  }
+}
   
-  .navbox #Results {
+.navbox #Results {
     text-align: right;
-  }
+}
   
-  .navbox #Profile {
+.navbox #Profile {
     text-align: left;
     margin-left: 70px;
-  }
+}
 
 #map { 
     margin-top: 80px;
@@ -74,23 +88,37 @@
     z-index: 1;
 }
 
+
 #ResultsOverlay {
     position: absolute;
-    margin-left: 50%;
+    margin-left: 66.65%;
     margin-top: 105px;
     display: none;
-    width: 50%;
+    width: 33.333%;
     height: 83%;
     background-color: rgba(0,0,0,0.5);
     z-index: 11;
     cursor: pointer;
 }
+
+#MeanOverlay {
+    position: absolute;
+    margin-left: 33.31%;
+    margin-top: 105px;
+    display: none;
+    width: 33.333%;
+    height: 83%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 11;
+    cursor: pointer;
+}
+
 #ProfileOverlay {
     position: absolute;
     margin-left: 0%;
     margin-top: 105px;
     display: none;
-    width: 50%;
+    width: 33.333%;
     height: 83%;
     background-color: rgba(0,0,0,0.5);
     z-index: 11;
@@ -183,7 +211,7 @@
     padding: 0%;
     font-family: 'Trebuchet MS';
     align-content: center;
-    font-size: 18px;
+    font-size: 17.5px;
     border: none;
     cursor: pointer;
 }
@@ -198,7 +226,7 @@
     position: absolute;
     background-color: #f9f9f9;
     align-content: center;
-    min-width: 173.5px;
+    min-width: 188.5px;
     z-index: 1;
 }
 
