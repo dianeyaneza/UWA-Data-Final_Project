@@ -1,15 +1,15 @@
 # UWA-Data-Final_Project
 
-## What do you mean ##
+# What do you mean x̄ #
 
 *******************
-# Team members
+## Team members 
 
 - Diane Yaneza
 - Vanessa Julianna
 
 *******************
-# Project Requirements
+## Project Requirements
 
 - This project will use: 
     * Machine Learning;
@@ -23,8 +23,8 @@
     * 2/3 of the screen: A chloropleth world map separated by countries with 2 layers (Anxiety, Depression) 
     
 *************************
-# Project Overview
-## Audience
+## Project Overview
+### Audience
 - General Australian Public
 
 *************************
