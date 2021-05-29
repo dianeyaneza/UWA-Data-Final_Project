@@ -96,7 +96,6 @@
     z-index: 11;
     cursor: pointer;
 }
-
   
 #text{
     position: absolute;
@@ -107,4 +106,51 @@
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
 }
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 30px;
+}
+
+@media screen and (max-height: 450px) {
+    .overlay a {font-size: 24px}
+    .overlay .closebtn {
+        font-size: 20px;
+        top: 15px;
+        right: 35px;
+    }
+}
+
+.overlay h3 {
+    padding: 4px;
+    font-family: 'Trebuchet MS';
+    font-size: 28px;
+    color: #fffefe;
+}
+
+.overlay a {
+    padding: 4px;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Trebuchet MS';
+    font-size: 24px;
+    color: #fffefe;
+    display: block;
+    transition: 0.3s;
+}
+  
+.overlay a:hover, .overlay a:focus {
+    color: #acacac;
+}
+
+.overlay-content {
+    position: relative;
+    top: 5%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
 
