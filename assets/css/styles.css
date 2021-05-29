@@ -118,7 +118,7 @@
     .overlay a {font-size: 24px}
     .overlay .closebtn {
         font-size: 20px;
-        top: 15px;
+        top: 10px;
         right: 35px;
     }
 }
@@ -140,9 +140,21 @@
     display: block;
     transition: 0.3s;
 }
-  
+
+.overlay label {
+    padding: 0px;
+    margin-bottom: 0%;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Trebuchet MS';
+    font-size: 16px;
+    color: #fffefe;
+    display: block;
+    transition: 0.3s;
+}
+
 .overlay a:hover, .overlay a:focus {
-    color: #acacac;
+    color: #9f9f9f;
 }
 
 .overlay-content {
@@ -153,4 +165,60 @@
     margin-top: 30px;
 }
 
+.collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
 
+.dropbtn {
+    background-color: #f9f9f9;
+    color: rgb(198, 198, 198);
+    padding: 0%;
+    font-family: 'Trebuchet MS';
+    align-content: center;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    align-content: center;
+    min-width: 173.5px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: rgb(39, 39, 39);
+    font-family: 'Trebuchet MS';
+    font-size: 14px;
+    align-content: center;
+    text-decoration: none;
+    display: block;
+}
+
+/* .dropdown-content a:hover {
+    background-color: #777
+} */
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #f1f1f1 ;
+}
