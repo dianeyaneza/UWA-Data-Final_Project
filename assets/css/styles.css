@@ -22,25 +22,39 @@
     z-index: 999;
     padding-top: 30px;
     pointer-events: none;
-  }
+}
   
-  .navbox h1 {
+.navbox h1 {
     font-family:'Trebuchet MS';
     font-weight: 500;
     margin: 0px;
     font-size: 3vw;
     pointer-events: all;
-  }
+}
+
+.navbox .navItem h1 {
+    text-align: center;
+    cursor: pointer;
+    margin: 0px;
+}
   
-  .navbox p {
+.navbox h1 {
     pointer-events: all;
-  }
+}
+
+.navbox h1:hover {
+    color: #777;
+}
+
+.navbox p {
+    pointer-events: all;
+}
   
-  .navbox p:hover {
-    text-decoration: underline;
-  }
+.navbox p:hover {
+    color: #777;
+}
   
-  .navbox .navItem {
+.navbox .navItem {
     font-family: 'Trebuchet MS';
     font-weight: 500;
     font-size: 1.4vw;
@@ -49,22 +63,22 @@
         -ms-flex-pack: center;
             justify-content: center;
     margin-left: 5%;
-  }
+}
   
-  .navbox .navItem p {
+.navbox .navItem p {
     text-align: center;
     cursor: pointer;
     margin: 0px;
-  }
+}
   
-  .navbox #Results {
+.navbox #Results {
     text-align: right;
-  }
+}
   
-  .navbox #Profile {
+.navbox #Profile {
     text-align: left;
     margin-left: 70px;
-  }
+}
 
 #map { 
     margin-top: 80px;
@@ -74,29 +88,42 @@
     z-index: 1;
 }
 
+
 #ResultsOverlay {
     position: absolute;
-    margin-left: 50%;
+    margin-left: 66.65%;
     margin-top: 105px;
     display: none;
-    width: 50%;
-    height: 83%;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 11;
-    cursor: pointer;
-}
-#ProfileOverlay {
-    position: absolute;
-    margin-left: 0%;
-    margin-top: 105px;
-    display: none;
-    width: 50%;
+    width: 33.333%;
     height: 83%;
     background-color: rgba(0,0,0,0.5);
     z-index: 11;
     cursor: pointer;
 }
 
+#MeanOverlay {
+    position: absolute;
+    margin-left: 33.31%;
+    margin-top: 105px;
+    display: none;
+    width: 33.333%;
+    height: 83%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 11;
+    cursor: pointer;
+}
+
+#ProfileOverlay {
+    position: absolute;
+    margin-left: 0%;
+    margin-top: 105px;
+    display: none;
+    width: 33.333%;
+    height: 83%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 11;
+    cursor: pointer;
+}
   
 #text{
     position: absolute;
@@ -108,3 +135,118 @@
     -ms-transform: translate(-50%,-50%);
 }
 
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 30px;
+}
+
+@media screen and (max-height: 450px) {
+    .overlay a {font-size: 24px}
+    .overlay .closebtn {
+        font-size: 20px;
+        top: 10px;
+        right: 35px;
+    }
+}
+
+.overlay h3 {
+    padding: 4px;
+    font-family: 'Trebuchet MS';
+    font-size: 28px;
+    color: #fffefe;
+}
+
+.overlay a {
+    padding: 4px;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Trebuchet MS';
+    font-size: 24px;
+    color: #fffefe;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay label {
+    padding: 0px;
+    margin-bottom: 0%;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Trebuchet MS';
+    font-size: 16px;
+    color: #fffefe;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #9f9f9f;
+}
+
+.overlay-content {
+    position: relative;
+    top: 5%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+
+.dropbtn {
+    background-color: #f9f9f9;
+    color: rgb(198, 198, 198);
+    padding: 0%;
+    font-family: 'Trebuchet MS';
+    align-content: center;
+    font-size: 17.5px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    align-content: center;
+    min-width: 188.5px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: rgb(39, 39, 39);
+    font-family: 'Trebuchet MS';
+    font-size: 14px;
+    align-content: center;
+    text-decoration: none;
+    display: block;
+}
+
+/* .dropdown-content a:hover {
+    background-color: #777
+} */
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #f1f1f1 ;
+}
