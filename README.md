@@ -19,8 +19,8 @@
     * Anxiety
     * Depression
 - The website will be a single page visualisation that shows:
-    * 1/3 of the screen: The user's profile information 
-    * 2/3 of the screen: A chloropleth world map separated by countries with 2 layers (Anxiety, Depression) 
+    * 3 x 1/3 of the screen (overlays): The user's profile information, user's results, and what it means
+    * Full screen: A chloropleth world map separated by countries with 2 layers (Anxiety, Depression) 
     
 *************************
 ## Project Overview
