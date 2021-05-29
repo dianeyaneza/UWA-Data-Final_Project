@@ -20,16 +20,62 @@
 
         <div class="navbox" id="NavBox">
             <div class="navItem"><p id="Profile" onclick="ProfilePage()">Profile</p></div>
-            <div class="navItem"><h1> What Do You Mean</h1></div>
+            <div class="navItem"><h1 id="Profile" onclick="MeanPage()"> What Do You Mean</h1></div>
             <div class="navItem"><p id="Results" onclick="ResultsPage()">Results</p></div>
         </div>
 
+
         <!-- overlay -->
-        <div id="ProfileOverlay" onclick="off()">
-            <div id="text">Overlay Text</div>
+
+        <!-- Profile overlay -->
+        <div id="ProfileOverlay" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="off()">&times;</a>
+            <div class="overlay-content">
+                <h3>Your Details</h3><br>
+
+
+                    <!-- <br><label for="name">Age:</label>
+                    <input type="text" id="name" name="name"><br> -->
+
+                    <div class="dropdown">
+                        <label for="name">Age:</label>
+                        <button class="dropbtn">select your age group...</button>
+                        <div class="dropdown-content">
+                            <a href="#">Under 5</a>
+                            <a href="#">5 - 14</a>
+                            <a href="#">15 - 49</a>
+                            <a href="#">50 - 69</a>
+                            <a href="#">Over 70</a>
+                        </div>
+                    </div><br>
+
+                    <br><label for="name">Country:</label>
+                    <input type="text" id="name" name="name"><br>
+                    <!-- <br><input type="submit" value="Submit"> -->
+                </form>
+                <!-- <a href="#">Age</a>
+                <a href="#">Country</a> -->
+            </div>
         </div>
-        <div id="ResultsOverlay" onclick="off()">
-            <div id="text">Overlay Text</div>
+
+        <!-- Mean overlay -->
+        <div id="MeanOverlay" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="off()">&times;</a>
+            <div class="overlay-content">
+                <h3>What this means</h3><br>
+                <a href="#">Anxiety</a>
+                <a href="#">Depression</a>
+            </div>
+        </div>
+
+        <!-- Results overlay -->
+        <div id="ResultsOverlay" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="off()">&times;</a>
+            <div class="overlay-content">
+                <h3>Your Results</h3><br>
+                <a href="#">Age</a>
+                <a href="#">Location</a>
+            </div>
         </div>
 
         
@@ -42,19 +88,7 @@
         <script type="text/javascript" src="assets/js/app.js"></script>
         
         <!-- overlay script -->
-        <script>
-            function ProfilePage() {
-                document.getElementById("ProfileOverlay").style.display = "block";
-            }
-            function ResultsPage() {
-                document.getElementById("ResultsOverlay").style.display = "block";
-            }
-            function off() {
-                document.getElementById("ProfileOverlay").style.display = "none";
-                document.getElementById("ResultsOverlay").style.display = "none";
-            }
-
-        </script>
+        <script type="text/javascript" src="assets/js/overlay.js"></script>
     
     </body>
 
