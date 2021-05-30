@@ -62,7 +62,7 @@
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    margin-left: 5%;
+    margin-left: 0%;
 }
   
 .navbox .navItem p {
@@ -83,8 +83,8 @@
 #map { 
     margin-top: 80px;
     position: absolute;
-    width: 98%;
-    height: 600px;
+    width: 98.5%;
+    height: 610px;
     z-index: 1;
 }
 
@@ -92,10 +92,10 @@
 #ResultsOverlay {
     position: absolute;
     margin-left: 66.65%;
-    margin-top: 105px;
+    margin-top: 103px;
     display: none;
     width: 33.333%;
-    height: 83%;
+    height: 84.5%;
     background-color: rgba(0,0,0,0.5);
     z-index: 11;
     cursor: pointer;
@@ -104,10 +104,10 @@
 #MeanOverlay {
     position: absolute;
     margin-left: 33.31%;
-    margin-top: 105px;
+    margin-top: 103px;
     display: none;
     width: 33.333%;
-    height: 83%;
+    height: 84.5%;
     background-color: rgba(0,0,0,0.5);
     z-index: 11;
     cursor: pointer;
@@ -116,10 +116,10 @@
 #ProfileOverlay {
     position: absolute;
     margin-left: 0%;
-    margin-top: 105px;
+    margin-top: 103px;
     display: none;
     width: 33.333%;
-    height: 83%;
+    height: 84.5%;
     background-color: rgba(0,0,0,0.5);
     z-index: 11;
     cursor: pointer;
@@ -187,27 +187,15 @@
 
 .overlay-content {
     position: relative;
-    top: 5%;
+    top: 15%;
     width: 100%;
     text-align: center;
     margin-top: 30px;
 }
 
-.collapsible {
-    background-color: #777;
-    color: white;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
-  }
-
 .dropbtn {
     background-color: #f9f9f9;
-    color: rgb(198, 198, 198);
+    color: rgb(216, 216, 216);
     padding: 0%;
     font-family: 'Trebuchet MS';
     align-content: center;
