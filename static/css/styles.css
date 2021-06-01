@@ -25,11 +25,12 @@
 }
   
 .navbox h1 {
-    font-family:'Trebuchet MS';
+    font-family: 'Times';
     font-weight: 500;
     margin: 0px;
     font-size: 3vw;
     pointer-events: all;
+    color: rgb(235, 58, 27);
 }
 
 .navbox .navItem h1 {
@@ -43,7 +44,7 @@
 }
 
 .navbox h1:hover {
-    color: #777;
+    color: rgb(30, 30, 30);
 }
 
 .navbox p {
@@ -51,11 +52,11 @@
 }
   
 .navbox p:hover {
-    color: #777;
+    color: rgb(30, 30, 30);
 }
   
 .navbox .navItem {
-    font-family: 'Trebuchet MS';
+    font-family:'Verdana';
     font-weight: 500;
     font-size: 1.4vw;
     display: flex;
@@ -63,6 +64,7 @@
         -ms-flex-pack: center;
             justify-content: center;
     margin-left: 0%;
+    color: rgb(235, 58, 27);
 }
   
 .navbox .navItem p {
@@ -153,16 +155,17 @@
 
 .overlay h3 {
     padding: 4px;
-    font-family: 'Trebuchet MS';
+    font-family: 'Verdana';
     font-size: 28px;
     color: #fffefe;
+    font-weight: 500;
 }
 
 .overlay a {
     padding: 4px;
     text-align: center;
     text-decoration: none;
-    font-family: 'Trebuchet MS';
+    font-family: 'Verdana';
     font-size: 24px;
     color: #fffefe;
     display: block;
@@ -174,7 +177,7 @@
     margin-bottom: 0%;
     text-align: center;
     text-decoration: none;
-    font-family: 'Trebuchet MS';
+    font-family: 'Verdana';
     font-size: 16px;
     color: #fffefe;
     display: block;
@@ -209,6 +212,25 @@
     display: inline-block;
 }
 
+.p {
+    font-family: 'Trebuchet MS';
+    font-size: 16px;
+    color: #f9f9f9;
+}
+
+.btn-primary {
+    color: #f9f9f9;
+    background-color: rgb(235, 58, 27);
+    border-color: rgb(235, 58, 27);
+    font-family: 'Verdana';
+    font-size: 13px;
+}
+
+.btn-primary:hover {
+    background-color: rgb(30, 30, 30);
+    border-color: rgb(30, 30, 30);
+}
+
 .dropdown-content {
     display: none;
     position: absolute;
@@ -219,8 +241,8 @@
 }
 
 .dropdown-content a {
-    color: rgb(39, 39, 39);
-    font-family: 'Trebuchet MS';
+    color: rgb(235, 58, 27);
+    font-family: 'Verdana';
     font-size: 14px;
     align-content: center;
     text-decoration: none;
