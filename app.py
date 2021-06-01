@@ -1,82 +1,38 @@
-# import necessary libraries
-from models import create_classes
-import os
-from flask import (
-    Flask,
-    render_template,
-    jsonify,
-    request,
-    redirect)
+# Dependencies
+from flask import Flask, render_template, redirect, jsonify
+import sqlalchemy
+import pandas as pd
+from sqlalchemy import create_engine, func
+import json
 
-#################################################
-# Flask Setup
-#################################################
+# Create an instance of Flask
 app = Flask(__name__)
-
-#################################################
-# Database Setup
-#################################################
-
-from flask_sqlalchemy import SQLAlchemy
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql' + os.environ.get('DATABASE_URL', '')[8:]  or "sqlite:///db.sqlite"
-# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///db.sqlite"
-
-# Remove tracking modifications
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-db = SQLAlchemy(app)
-
-Pet = create_classes(db)
 
 # create route that renders index.html template
 @app.route("/")
 def home():
     return render_template("index.html")
 
+    
+# END POINT: JSON WORLD MH DATA
+@app.route("/api_wmhdata")
+def events():
+    # See events_flask.ipynb for the same code at this end point, showing the variable outputs throughout the steps. 
 
-# Query the database and send the jsonified results
-@app.route("/send", methods=["GET", "POST"])
-def send():
-    if request.method == "POST":
-        name = request.form["petName"]
-        lat = request.form["petLat"]
-        lon = request.form["petLon"]
+    ######### CONNECT TO DATABASE AND READ DATA AS DATAFRAME VIA PANDAS #########
+    # Step 1. ##### Connect to postgres database and save to variable 'engine' #####
 
-        pet = Pet(name=name, lat=lat, lon=lon)
-        db.session.add(pet)
-        db.session.commit()
-        return redirect("/", code=302)
+        ### Option 1: For postgres users
+    rds_connection_string = "postgres:postgres@localhost:5432/events_db"
+    
+        ### Option 2: For postgres users to enter in personal login details (if option1 does not work)
+    rds_connection_string = "postgres:309Malanday!@localhost:5432/events_db"
 
-    return render_template("form.html")
+    engine = create_engine(f'postgresql://{rds_connection_string}')
 
 
-@app.route("/api/pals")
-def pals():
-    results = db.session.query(Pet.name, Pet.lat, Pet.lon).all()
 
-    hover_text = [result[0] for result in results]
-    lat = [result[1] for result in results]
-    lon = [result[2] for result in results]
-
-    pet_data = [{
-        "type": "scattergeo",
-        "locationmode": "USA-states",
-        "lat": lat,
-        "lon": lon,
-        "text": hover_text,
-        "hoverinfo": "text",
-        "marker": {
-            "size": 50,
-            "line": {
-                "color": "rgb(8,8,8)",
-                "width": 1
-            },
-        }
-    }]
-
-    return jsonify(pet_data)
-
+##########################################################
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
