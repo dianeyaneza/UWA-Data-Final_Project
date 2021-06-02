@@ -15,7 +15,7 @@ def home():
 
     
 # END POINT: JSON WORLD MH DATA
-@app.route("/api_wmhdata")
+@app.route("/wmwbata")
 def events():
     # See events_flask.ipynb for the same code at this end point, showing the variable outputs throughout the steps. 
 
