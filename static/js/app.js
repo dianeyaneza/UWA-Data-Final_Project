@@ -1,3 +1,8 @@
+d3.json('/wmhdata').then(function(data) {
+    console.log(data);
+    createAnxiety(data.features);
+})
+
 var mymap = L.map('map').setView([10.82, 21.80], 2.5);
 
 var streets = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -11,7 +16,6 @@ var streets = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{
 
 
 
-
 var cities = L.layerGroup();
 L.marker([-31.95, 115.86]).bindPopup('This is Perth.').addTo(cities),
 L.marker([-26.20, 28.04]).bindPopup('This is Johannesburg.').addTo(cities),
@@ -19,8 +23,6 @@ L.marker([23.11, -82.36]).bindPopup('This is Havana').addTo(cities);
 
 var baseMaps = {
     "Streets": streets
-    
-    
 };
 
 var overlayMaps = {
@@ -28,4 +30,4 @@ var overlayMaps = {
 
 };
 
-L.control.layers(baseMaps, overlayMaps).addTo(mymap);
+L.control.layers(overlayMaps).addTo(mymap);
