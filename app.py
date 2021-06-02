@@ -41,7 +41,7 @@ def home():
 # END POINT: JSON WORLD MH DATA
 @app.route("/api_wmhdata")
 def events():
-    # See events_flask.ipynb for the same code at this end point, showing the variable outputs throughout the steps. 
+    # See wmhdata_flask.ipynb for the same code at this end point, showing the variable outputs throughout the steps. 
 
     ######### CONNECT TO DATABASE AND READ DATA AS DATAFRAME VIA PANDAS #########
     # Step 1. ##### Connect to postgres database and save to variable 'engine' #####
