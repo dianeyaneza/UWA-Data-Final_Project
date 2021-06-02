@@ -30,7 +30,8 @@ var baseMaps = {
 };
 
 var overlayMaps = {
-    "Cities": cities
+    "Anxiety": cities
+
 };
 
 L.control.layers(baseMaps, overlayMaps).addTo(mymap);
