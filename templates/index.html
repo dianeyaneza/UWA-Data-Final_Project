@@ -16,7 +16,7 @@
   
     </head>
 
-    <body style="background-color: black;">
+    <body style="background-color: white;">
 
         <div class="navbox" id="NavBox">
             <div class="navItem"><p id="Profile" onclick="ProfilePage()">Profile</p></div>
@@ -44,7 +44,7 @@
                         </div>
                     </div><br>
                     <br><label for="name">Country:</label>
-                    <input type="text" id="name" name="name"><br>
+                    <input type="text" id="country" name="name"><br>
                     <br><br>
                     <label for="name">How are you?</label><br>
                     <div class="btn-group">
@@ -87,7 +87,12 @@
             <div id="map"></div>
         </div>
 
+        <!-- D3 -->
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+
+        <!-- Our JS -->
         <script type="text/javascript" src="../static/js/app.js"></script>
+        <script type="text/javascript" src="../static/js/age.js"></script>
         
         <!-- overlay script -->
         <script type="text/javascript" src="../static/js/overlay.js"></script>
