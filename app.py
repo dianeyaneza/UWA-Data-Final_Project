@@ -42,10 +42,10 @@ def data():
     # Step 1. ##### Connect to postgres database and save to variable 'engine' #####
 
     ### Option 1: For postgres users
-    # rds_connection_string = "postgres:postgres@localhost:5432/events_db"
+    # rds_connection_string = "postgres:postgres@localhost:5432/whatdoyoumean_db"
     
     ### Option 2: For postgres users to enter in personal login details (if option1 does not work)
-    rds_connection_string = "postgres:309Malanday!@localhost:5432/events_db"
+    rds_connection_string = "postgres:309Malanday!@localhost:5432/whatdoyoumean_db"
 
     engine = create_engine(f'postgresql://{rds_connection_string}')
     
