@@ -16,11 +16,11 @@
   
     </head>
 
-    <body style="background-color: rgb(250, 250, 250)">
+    <body style="background-color: black;">
 
         <div class="navbox" id="NavBox">
             <div class="navItem"><p id="Profile" onclick="ProfilePage()">Profile</p></div>
-            <div class="navItem"><h1 id="Profile" onclick="MeanPage()"> What Do You Mean</h1></div>
+            <div class="navItem"><h1 id="Profile" onclick="MeanPage()"><b>What Do You Mean x̄</b></h1></div>
             <div class="navItem"><p id="Results" onclick="ResultsPage()">Results</p></div>
         </div>
 
@@ -31,12 +31,7 @@
         <div id="ProfileOverlay" class="overlay">
             <a href="javascript:void(0)" class="closebtn" onclick="off()">&times;</a>
             <div class="overlay-content">
-                <h3>Your Details</h3><br>
-
-
-                    <!-- <br><label for="name">Age:</label>
-                    <input type="text" id="name" name="name"><br> -->
-
+                <h3><u>Your Details</u></h3><br>
                     <div class="dropdown">
                         <label for="name">Age:</label>
                         <button class="dropbtn">select your age group...</button>
@@ -48,13 +43,20 @@
                             <a href="#">Over 70</a>
                         </div>
                     </div><br>
-
                     <br><label for="name">Country:</label>
                     <input type="text" id="name" name="name"><br>
-                    <!-- <br><input type="submit" value="Submit"> -->
+                    <br><br>
+                    <label for="name">How are you?</label><br>
+                    <div class="btn-group">
+                        <button type="button" class="btn-primary">Feeling calm</button>
+                        <button type="button" class="btn-primary">A bit tense</button>
+                    </div>
+                    <br><br>
+                    <div class="btn-group">
+                        <button type="button" class="btn-primary">Pretty happy</button>
+                        <button type="button" class="btn-primary">A little down</button>
+                    </div>
                 </form>
-                <!-- <a href="#">Age</a>
-                <a href="#">Country</a> -->
             </div>
         </div>
 
@@ -62,7 +64,7 @@
         <div id="MeanOverlay" class="overlay">
             <a href="javascript:void(0)" class="closebtn" onclick="off()">&times;</a>
             <div class="overlay-content">
-                <h3>What this means</h3><br>
+                <h3><u>What this means</u></h3><br>
                 <a href="#">Anxiety</a>
                 <a href="#">Depression</a>
             </div>
@@ -72,7 +74,7 @@
         <div id="ResultsOverlay" class="overlay">
             <a href="javascript:void(0)" class="closebtn" onclick="off()">&times;</a>
             <div class="overlay-content">
-                <h3>Your Results</h3><br>
+                <h3><u>Your Results</u></h3><br>
                 <a href="#">Age</a>
                 <a href="#">Location</a>
             </div>
