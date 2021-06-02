@@ -1,6 +1,6 @@
 # Dependencies
 from flask import Flask, render_template, request, redirect, jsonify
-from models import create_classes
+# from models import create_classes
 import sqlalchemy
 import pandas as pd
 from sqlalchemy import create_engine, func
@@ -35,17 +35,17 @@ def home():
     
 # END POINT: JSON WORLD MH DATA
 @app.route("/api_wmhdata")
-def events():
+def wmhdata():
     # See wmhdata_flask.ipynb for the same code at this end point, showing the variable outputs throughout the steps. 
 
     ######### CONNECT TO DATABASE AND READ DATA AS DATAFRAME VIA PANDAS #########
     # Step 1. ##### Connect to postgres database and save to variable 'engine' #####
 
     ### Option 1: For postgres users
-    # rds_connection_string = "postgres:postgres@localhost:5432/events_db"
+    rds_connection_string = "postgres:postgres@localhost:5432/events_db"
     
     ### Option 2: For postgres users to enter in personal login details (if option1 does not work)
-    rds_connection_string = "postgres:309Malanday!@localhost:5432/events_db"
+    # rds_connection_string = "postgres:309Malanday!@localhost:5432/events_db"
 
     engine = create_engine(f'postgresql://{rds_connection_string}')
     
