@@ -48,13 +48,16 @@ def data():
     rds_connection_string = "postgres:309Malanday!@localhost:5432/events_db"
 
     engine = create_engine(f'postgresql://{rds_connection_string}')
-
+    
     # Step 2. save data into a pandas variable using engine 
     wmhdata = pd.read_sql_table('whatdoyoumean_table', engine) 
 
     # Step 3. Convert pandas df to json
 
 
+    # Step 3. #### Convert pandas dataframe to json format. json.loads will convert it to a clean and readable format. #####
+    wmhdata_result = json.loads(json.dumps(json.loads(wmhdata.to_json(orient = "records")), indent=4)) 
+    return jsonify(wmhdata_result)    
 
 ##########################################################
 
