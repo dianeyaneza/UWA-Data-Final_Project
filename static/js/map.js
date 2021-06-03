@@ -1,50 +1,82 @@
 function loadmap() {
 
-    // streets tile
-    var streets = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox/streets-v11',
-        tileSize: 512,
-        zoomOffset: -1,
-        accessToken: 'pk.eyJ1IjoiZGlhbmV5YW5lemEiLCJhIjoiY2tuZnZvenkyMXZyeDJvazg3NHlvNGJoMSJ9.b2Mbk6QyGrdG8GIqJr1lNw'
+    d3.json('/api_wmhdata').then(function(data) {
+        // console.log(data);
+        var data = data;
+
+        // streets tile
+        var streets = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+            accessToken: 'pk.eyJ1IjoiZGlhbmV5YW5lemEiLCJhIjoiY2tuZnZvenkyMXZyeDJvazg3NHlvNGJoMSJ9.b2Mbk6QyGrdG8GIqJr1lNw'
+        });
+
+        var layers = {
+            Anxiety: new L.LayerGroup(),
+            Depression: new L.LayerGroup(),
+        };
+
+        // map object with layers
+        var mymap = L.map('map', {
+            center: [10.82, 21.80],
+            zoom: 2.5,
+            layers: [
+                layers.Anxiety,
+                layers.Depression
+            ]
+        });
+
+        // age dropdown
+        var ageOptions = ["Under 5", "5-14", "15-49", "50-69", "Over 70"]
+        var ageDropdown = d3.select("#selAge")
+        ageDropdown
+        .selectAll('myOptions') //create class 
+        .data(ageOptions)
+        .enter()
+        .append('option')
+        .text(function (d) { return d; }) // text showed in the dropdown
+        .attr("value", function (d) {return d;})
+
+        streets.addTo(mymap);
+
+        var entities = data.map(elem => elem.Entity);
+        // console.log(entities); 
+        var lat = data.map(elem => elem.latitude);
+        var long = data.map(elem => elem.longitude);
+        var latlong = lat.map(function(latitude, index){
+            return [latitude, long[index]];
+        });
+
+        // anxiety
+        var aData = L.layerGroup().addTo(mymap);
+        for (i = 0; i < latlong.length; i++) {
+            circle = L.circle([latlong[i][0], latlong[i][1]]).bindPopup("entities");
+            aData.addLayer(circle);
+        }
+
+        // depression
+        var dData = L.layerGroup().addTo(mymap);
+        for (i = 0; i < latlong.length; i++) {
+            circle = L.circle([latlong[i][0], latlong[i][1], {
+                color: 'red',
+                radius: 500
+            }]);
+            dData.addLayer(circle);
+        }
+
+        var overlayMaps = {
+            'Anxiety': aData,
+            'Depression': dData
+        };
+
+        // Create a control for our layers, add our overlay layers to it
+        L.control.layers(null, overlayMaps).addTo(mymap);
+
+        L.layerGroup().addTo(mymap);
     });
-
-    var layers = {
-        Anxiety: new L.LayerGroup(),
-        Depression: new L.LayerGroup(),
-    };
-
-    // map object with layers
-    var mymap = L.map('map', {
-        center: [10.82, 21.80],
-        zoom: 2.5,
-        layers: [
-            layers.Anxiety,
-            layers.Depression
-        ]
-    });
-
-    streets.addTo(mymap);
-
-    var overlayMaps = {
-        'Anxiety': layers.Anxiety,
-        'Depression': layers.Depression
-    };
-
-    // Create a control for our layers, add our overlay layers to it
-    L.control.layers(null, overlayMaps).addTo(mymap);
-
-    // age dropdown
-    var ageOptions = ["Under 5", "5-14", "15-49", "50-69", "Over 70"]
-    var ageDropdown = d3.select("#selAge")
-    ageDropdown
-    .selectAll('myOptions') //create class 
-    .data(ageOptions)
-    .enter()
-    .append('option')
-    .text(function (d) { return d; }) // text showed in the dropdown
-    .attr("value", function (d) {return d;})
 
 };
 
@@ -79,6 +111,7 @@ function updateMap() {
         //     console.log(db5);
         // } // working
 
+
         function getRadius(selectedAge) {
             // return selectedAge * 30000; 
             if (selectedAge == "Under 5") {
@@ -95,29 +128,11 @@ function updateMap() {
             }
             if (selectedAge == "Over 70") {
                 return aa69 * 30000, da69 * 30000;
-            }
+            };
             
         };
-        console.log(selectedAge)
-
-        var lat = data.map(elem => elem.latitude);
-        var long = data.map(elem => elem.longitude);
-        var latlong = lat.map(function(latitude, index){
-            return [latitude, long[index]];
-        });
-
-        // anxiety
-        var anxiety = L.layerGroup().addTo(mymap);
-        for (i = 0; i < latlong.length; i++) {
-            marker = L.circle([latlong[i][0], latlong[i][1]]), markerRadius;
-            anxiety.addLayer(marker);
-        };
-
-        L.layerGroup().addTo(mymap);
-    })
-        
+        // console.log(selectedAge);
     });
-};
-
-loadmap();
-
+});
+}
+loadmap()
