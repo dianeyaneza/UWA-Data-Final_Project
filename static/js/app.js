@@ -1,4 +1,4 @@
-d3.json('/wmhdata').then(function(data) {
+d3.json('api_wmhdata').then(function(data) {
     console.log(data);
     createAnxiety(data.features);
 })
