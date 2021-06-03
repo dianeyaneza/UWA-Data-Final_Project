@@ -1,4 +1,4 @@
-CONFIGURATION
+### CONFIGURATION
 
 1. Create a new conda environment just for this app. All of our project dependencies will be installed in this environment.
     
@@ -37,7 +37,7 @@ CONFIGURATION
 
 9. Add, commit and push everything up to repo
 
-CREATING THE HEROKU APP
+### CREATING THE HEROKU APP
 
 1. Create a new app on Heroku ('vjuliana-wmh').
 
@@ -47,4 +47,4 @@ CREATING THE HEROKU APP
 
 4. Click 'View'
 
-PREPARING THE DATABASE
+### PREPARING THE DATABASE
