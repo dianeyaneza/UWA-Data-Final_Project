@@ -1,9 +1,9 @@
 # Dependencies
 from flask import Flask, render_template, request, redirect, jsonify
-from models import create_classes
+# from models import create_classes
 import sqlalchemy
-import pandas as pd
 from sqlalchemy import create_engine, func
+import pandas as pd
 import json
 import os
 
@@ -18,11 +18,15 @@ app = Flask(__name__)
 
 # from flask_sqlalchemy import SQLAlchemy
 
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql' + os.environ.get('DATABASE_URL', '')[8:]  or "sqlite:///db.sqlite"
-# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///db.sqlite"
+## HEROKU - app deployment
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql' + os.environ.get('DATABASE_URL', '')[8:]  
+    #  or "sqlite:///db.sqlite"
+
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') 
+#   or "sqlite:///db.sqlite"
 
 # Remove tracking modifications
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # db = SQLAlchemy(app)
 
@@ -53,10 +57,7 @@ def wmhdata():
     # Step 2. save data into a pandas variable using engine 
     wmhdata = pd.read_sql_table('whatdoyoumean_table', engine) 
 
-    # Step 3. Convert pandas df to json
-
-
-    # Step 3. #### Convert pandas dataframe to json format. json.loads will convert it to a clean and readable format. #####
+    # Step 3. Convert pandas dataframe to json format. json.loads will convert it to a clean and readable format. 
     wmhdata_result = json.loads(json.dumps(json.loads(wmhdata.to_json(orient = "records")), indent=4)) 
     return jsonify(wmhdata_result)    
 
