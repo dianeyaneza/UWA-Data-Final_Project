@@ -51,7 +51,6 @@ d3.json('/api_wmhdata').then(function(data) {
     var overlayMaps = {
         'Anxiety': aData,
         'Depression': dData
-
     };
 
     // layer control on top right
