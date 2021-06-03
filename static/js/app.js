@@ -1,16 +1,17 @@
-d3.json('/api_wmhdata').then(function(data) {
-    // console.log(data);
-    // console.log(data.Entity);
-    var entities = data.map(elem => elem.Entity);
-    console.log(entities); 
-    var lat = data.map(elem => elem.latitude);
-    var long = data.map(elem => elem.longitude);
-    var latlong = lat.map(function(latitude, index){
-        return [latitude, long[index]];
-    });
-    console.log(latlong);
-    // createAnxiety(data);
 
+
+function createMap() {
+
+    d3.json('/api_wmhdata').then(function(data) {
+        // console.log(data);
+        // console.log(data.Entity);
+        var entities = data.map(elem => elem.Entity);
+        // console.log(entities); 
+        var lat = data.map(elem => elem.latitude);
+        var long = data.map(elem => elem.longitude);
+        var latlong = lat.map(function(latitude, index){
+            return [latitude, long[index]];
+        });
 
     var mymap = L.map('map').setView([10.82, 21.80], 2.5);
 
@@ -57,3 +58,8 @@ d3.json('/api_wmhdata').then(function(data) {
     L.control.layers(overlayMaps).addTo(mymap);
 
 });
+=======
+}
+
+createMap()
+

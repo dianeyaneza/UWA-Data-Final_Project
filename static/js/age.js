@@ -1,23 +1,34 @@
-function updateMap() {
+const mappy = d3.select("selAge");
+
+function updateMap(firstRun=false) {
+    console.log('executing updateMap')
+    if (firstRun) {
+        // age dropdown
+        var ageOptions = ["Under 5", "5-14", "15-49", "50-69", "Over 70"]
+        d3.select("#selAge")
+        .selectAll('myOptions') //create class 
+        .data(ageOptions)
+        .enter()
+        .append('option')
+        .text(function (d) { return d; }) // text showed in the dropdown
+        .attr("value", function (d) {return d;})
+    }
+    else {
+        var ageOptions = []
+    };
+
+    // mappy.html("");
 
     d3.json('/api_wmhdata').then(function(data) {
         // console.log(data);
         var data = data;
         // createAnxiety(data);
-        
-        // age dropdown
-        var ageOptions = ["Under 5", "5-14", "15-49", "50-69", "Over 70"]
-        
-        d3.select("#selAge")
-            .selectAll('myOptions') //create class 
-            .data(ageOptions)
-            .enter()
-            .append('option')
-            .text(function (d) { return d; }) // text showed in the dropdown
-            .attr("value", function (d) {return d;})
 
         // Event listener for age dropdown selection 
         d3.select("#selAge").on("change", function(selectedAge) {
+
+            const mappy = d3.select("selAge");
+            mappy.html("");
             
             var selectedAge = d3.select(this).property("value")
             console.log(selectedAge); 
@@ -66,11 +77,11 @@ function updateMap() {
             if (selectedAge == "Over 70") {
                 filtD =  data.map(elem => elem.D_above_69yo);
             }
-            console.log(filtD);
+            // console.log(filtD);
             
         });
 
     });
 };
 
-updateMap();
+updateMap(true);
