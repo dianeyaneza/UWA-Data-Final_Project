@@ -7,29 +7,29 @@
 //     .attr('name','textInput')
 //     .attr('value','Text goes here')
 
-// Load in data from @app.route
-var appRoute = 'api_wmhdata';
+
+// Define new mymap var
+// var zoomMap = new mymap
 
 // Create event handler
 // Select the id on index.html
 var country_entered = d3.select("#country")
 country_entered.on("keypress", runZoomIn);
 
-function runZoomIn(userInput) {
-    console.log("hello");
+var newZoomMap = new L.map('map')
 
-    // Prevent the page from refreshing
-    // d3.event.preventDefault();
+// Load in data from @app.route
+var appRoute = 'api_wmhdata';
+
+function runZoomIn(userInput) {
+    // console.log("select country");
 
     // Select the id on index.html
     var country_entered = d3.select("#country")
 
     // Get the value of the input element
-    var userInput = country_entered.property("value").toUpperCase();
+    var userInput = country_entered.property("value");
     console.log(userInput)
-
-    // Refresh after every function
-    // tbody.html("");
 
     // Grab data with d3
     d3.json(appRoute).then((data) => {
@@ -43,17 +43,37 @@ function runZoomIn(userInput) {
         country_name = allData.map(c => c.Entity);
         // console.log(country_name[20]) // This works
 
+        // Create var for latlong to update map
+        var lat = allData.map(l => l.latitude);
+        var long = allData.map(l => l.longitude);
+        var latlong = lat.map(function (latitude, index) {
+            return [latitude, long[index]];
+        });
+        // console.log(latlong);
+
         // Loop through each row and append result in #country
-        for (var i = 0; i < country_name.length; i++) {
-            if (userInput === country_name[i]) {
 
+        // for (var i = 0; i < country_name.length; i++) {
+        //     if (userInput.toLowerCase() === country_name[i].toLowerCase()) {
                 // Update the latlongs on 'mymap'
-                var mymap = L.map('map').setView([10.82, 21.80], 2.5);
-            }
-        }
+                // new L.map('map').setView([latlong[0], latlong[1]], 2.5);
+                // L.map.setView([latlong[0], latlong[1]])
+                // L.latLng(latlong[0], latlong[1])
+            //     append.setView([latlong[0], latlong[1]])
+            // };
+        // };
 
-
+        // map.on('enter', function (enter) {
     })
 }
 
-runEnter();
+function runZoomIn() {
+    newZoomMap.addTo(mymap)
+};
+
+
+// Prevent the page from refreshing
+// d3.event.preventDefault();
+
+// Refresh after every function
+// tbody.html("");

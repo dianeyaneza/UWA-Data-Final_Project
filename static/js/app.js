@@ -41,7 +41,7 @@ function createAnxiety(data) {
             return "brown"        
         }
 
-}
+}};
 
 var mymap = L.map('map').setView([10.82, 21.80], 2.5);
 
