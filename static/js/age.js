@@ -23,43 +23,50 @@ function updateMap() {
             console.log(selectedAge); 
             // console.log(data);
             
-            // Anxiety by age group
-            var ab5 = data.map(elem => elem.A_below_5yo);
-            var aa5 = data.map(elem => elem.A_above_5yo);
-            var aa14 = data.map(elem => elem.A_above_14yo);
-            var aa49 = data.map(elem => elem.A_above_49yo);
-            var aa69 = data.map(elem => elem.A_above_69yo);
-            // console.log(ab5)
-
-            if (selectedAge == "Under 5") {
-                filtA= data.map(elem => elem.D_below_5yo);
-            }
-            if (selectedAge == "5-14") {
-                filtA =  data.map(elem => elem.D_above_5yo);
-            }
-            console.log(filtA);
-
+            // // coordinates
             var lat = data.map(elem => elem.latitude);
             var long = data.map(elem => elem.longitude);
             var latlong = lat.map(function(latitude, index){
                 return [latitude, long[index]];
             });
 
-            console.log(latlong);
+            // // Anxiety data by age selection
+            // // filtA will be size of Anxiety markers on the map
+            if (selectedAge == "Under 5") {
+                filtA = data.map(elem => elem.A_below_5yo);
+            }
+            if (selectedAge == "5-14") {
+                filtA =  data.map(elem => elem.A_above_5yo);
+            }
+            if (selectedAge == "15-49") {
+                filtA =  data.map(elem => elem.A_above_14yo);
+            }
+            if (selectedAge == "50-69") {
+                filtA =  data.map(elem => elem.A_above_49yo);
+            }
+            if (selectedAge == "Over 70") {
+                filtA =  data.map(elem => elem.A_above_69yo);
+            }
+            console.log(filtA);
 
-            // Depression by age group
-            // var db5 = data.map(elem => elem.D_below_5yo);
-            // var da5 = data.map(elem => elem.D_above_5yo);
-            // var da14 = data.map(elem => elem.D_above_14yo);
-            // var da49 = data.map(elem => elem.D_above_49yo);
-            // var da69 = data.map(elem => elem.D_above_69yo);
-            // console.log(db5)
-
-            // filtA = data.filter(data => data == selectedAge);
-            // console.log(filtA);
-
-            // RUN FUNCTIONS // 
-            // updateMap(filtA); 
+            // // Depression data
+            // // filtD will be size of Depression markers on the map
+            if (selectedAge == "Under 5") {
+                filtD = data.map(elem => elem.D_below_5yo);
+            }
+            if (selectedAge == "5-14") {
+                filtD =  data.map(elem => elem.D_above_5yo);
+            }
+            if (selectedAge == "15-49") {
+                filtD =  data.map(elem => elem.D_above_14yo);
+            }
+            if (selectedAge == "50-69") {
+                filtD =  data.map(elem => elem.D_above_49yo);
+            }
+            if (selectedAge == "Over 70") {
+                filtD =  data.map(elem => elem.D_above_69yo);
+            }
+            console.log(filtD);
             
         });
 
