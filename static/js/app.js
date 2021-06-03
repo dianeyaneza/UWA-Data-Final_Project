@@ -1,6 +1,6 @@
-d3.json('api_wmhdata').then(function(data) {
-    console.log(data);
-    createAnxiety(data.features);
+d3.json('/api_wmhdata').then(function(data) {
+    // console.log(data);
+    // createAnxiety(data.features);
 })
 
 var mymap = L.map('map').setView([10.82, 21.80], 2.5);
