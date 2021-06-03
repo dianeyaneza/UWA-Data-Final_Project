@@ -33,28 +33,29 @@
             <div class="overlay-content">
                 <h3><u>Your Details</u></h3><br>
                     <div class="dropdown">
-                        <label for="name">Age:</label>
-                        <button class="dropbtn">select your age group...</button>
-                        <div class="dropdown-content">
+                        <label for="name">Select your age:</label>
+                        <select id="selAge" onchange="updateMap(this.value)" role="button" class="dropbtn" >select your age group...
+                        </select>
+                        <!-- <div class="dropdown-content">
                             <a href="#">Under 5</a>
                             <a href="#">5 - 14</a>
                             <a href="#">15 - 49</a>
                             <a href="#">50 - 69</a>
                             <a href="#">Over 70</a>
-                        </div>
+                        </div> -->
                     </div><br>
-                    <br><label for="name">Country:</label>
+                    <br><label for="name">Type your country:</label>
                     <input type="text" id="country" name="name"><br>
                     <br><br>
                     <label for="name">How are you?</label><br>
                     <div class="btn-group">
-                        <button type="button" class="btn-primary">Feeling calm</button>
-                        <button type="button" class="btn-primary">A bit tense</button>
+                        <button type="button" class="btn-default">Feeling calm</button>
+                        <button type="button" class="btn-default">A bit tense</button>
                     </div>
                     <br><br>
                     <div class="btn-group">
-                        <button type="button" class="btn-primary">Pretty happy</button>
-                        <button type="button" class="btn-primary">A little down</button>
+                        <button type="button" class="btn-default">Pretty happy</button>
+                        <button type="button" class="btn-default">A little down</button>
                     </div>
                 </form>
             </div>
