@@ -4,30 +4,6 @@ function updateMap() {
         // console.log(data);
         var data = data;
         // createAnxiety(data);
-
-        // coordinates
-        var lat = data.map(elem => elem.latitude);
-        var long = data.map(elem => elem.longitude);
-        var latlong = lat.map(function(latitude, index){
-            return [latitude, long[index]];
-            // console.log(latlong)
-        });
-
-        // Anxiety by age group
-        var ab5 = data.map(elem => elem.A_below_5yo);
-        var aa5 = data.map(elem => elem.A_above_5yo);
-        var aa14 = data.map(elem => elem.A_above_14yo);
-        var aa49 = data.map(elem => elem.A_above_49yo);
-        var aa69 = data.map(elem => elem.A_above_69yo);
-        // console.log(ab5)
-
-        // Depression by age group
-        var db5 = data.map(elem => elem.D_below_5yo);
-        var da5 = data.map(elem => elem.D_above_5yo);
-        var da14 = data.map(elem => elem.D_above_14yo);
-        var da49 = data.map(elem => elem.D_above_49yo);
-        var da69 = data.map(elem => elem.D_above_69yo);
-        // console.log(db5)
         
         // age dropdown
         var ageOptions = ["Under 5", "5-14", "15-49", "50-69", "Over 70"]
@@ -39,30 +15,61 @@ function updateMap() {
             .append('option')
             .text(function (d) { return d; }) // text showed in the dropdown
             .attr("value", function (d) {return d;})
-        });
 
         // Event listener for age dropdown selection 
-        d3.select("#selAge").on("change", function(selectedOption) {
+        d3.select("#selAge").on("change", function(selectedAge) {
             
-            var selectedOption = d3.select(this).property("value")
-            console.log(selectedOption); 
+            var selectedAge = d3.select(this).property("value")
+            console.log(selectedAge); 
+            // console.log(data);
             
-            // filtData = data.filter(data => data.category == selectedOption);
-            // console.log(filtData);
+            // // coordinates
+            var lat = data.map(elem => elem.latitude);
+            var long = data.map(elem => elem.longitude);
+            var latlong = lat.map(function(latitude, index){
+                return [latitude, long[index]];
+            });
 
-            // // RUN FUNCTIONS // 
-            updateMap(selectedOption); 
-            // updateTable(); // The code for this function is located in 3_table.js file
+            // // Anxiety data by age selection
+            // // filtA will be size of Anxiety markers on the map
+            if (selectedAge == "Under 5") {
+                filtA = data.map(elem => elem.A_below_5yo);
+            }
+            if (selectedAge == "5-14") {
+                filtA =  data.map(elem => elem.A_above_5yo);
+            }
+            if (selectedAge == "15-49") {
+                filtA =  data.map(elem => elem.A_above_14yo);
+            }
+            if (selectedAge == "50-69") {
+                filtA =  data.map(elem => elem.A_above_49yo);
+            }
+            if (selectedAge == "Over 70") {
+                filtA =  data.map(elem => elem.A_above_69yo);
+            }
+            console.log(filtA);
 
-        
-
-        // function updateMap(selectedGroup){
-
+            // // Depression data
+            // // filtD will be size of Depression markers on the map
+            if (selectedAge == "Under 5") {
+                filtD = data.map(elem => elem.D_below_5yo);
+            }
+            if (selectedAge == "5-14") {
+                filtD =  data.map(elem => elem.D_above_5yo);
+            }
+            if (selectedAge == "15-49") {
+                filtD =  data.map(elem => elem.D_above_14yo);
+            }
+            if (selectedAge == "50-69") {
+                filtD =  data.map(elem => elem.D_above_49yo);
+            }
+            if (selectedAge == "Over 70") {
+                filtD =  data.map(elem => elem.D_above_69yo);
+            }
+            console.log(filtD);
             
+        });
 
-
-            
-        // }
     });
 };
 
