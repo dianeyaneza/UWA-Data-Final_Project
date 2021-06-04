@@ -59,28 +59,63 @@ function loadmap() {
         });
 
         // anxiety
-        var aData = L.layerGroup().addTo(mymap);
-        for (i = 0; i < latlong.length; i++) {
-            circle = L.circle([latlong[i][0], latlong[i][1]]);
-            aData.addLayer(circle);
-        }
+        // var aData = L.layerGroup().addTo(mymap);
+        // for (i = 0; i < latlong.length; i++) {
+        //     circle = L.circle([latlong[i][0], latlong[i][1]]);
+        //     aData.addLayer(circle);
+        // }
 
         // depression
-        var dData = L.layerGroup().addTo(mymap);
-        for (i = 0; i < latlong.length; i++) {
-            circle = L.circle([latlong[i][0], latlong[i][1]]);
-            dData.addLayer(circle);
-        }
+        // var dData = L.layerGroup().addTo(mymap);
+        // for (i = 0; i < latlong.length; i++) {
+        //     circle = L.circle([latlong[i][0], latlong[i][1]]);
+        //     dData.addLayer(circle);
+        // }
 
         // testing marker radius *not working, disables layer control
         // anxiety
-        // var aData = L.layerGroup().addTo(mymap);
-        // for (i = 0; i < latlong.length; i++) {
-        //     circle = L.circle([latlong[i][0], latlong[i][1]], {
-        //         radius: markerRadius(selectedAge)
-        //     });
-        //     aData.addLayer(circle);
-        // }
+
+        // var circle = L.circle();
+
+        /////////////////////////////////
+        // TEST TO CHANGE RADIUS      ///
+        ////////////////////////////////
+
+        var aData = L.layerGroup().addTo(mymap);
+        for (i = 0; i < latlong.length; i++) {
+            circle = L.circle([latlong[i][0], latlong[i][1]], 300000, {
+                color: 'royalblue',
+                fillColor: 'white',
+                fillOpacity: 0.5
+            });
+            aData.addLayer(circle);
+
+            function changeRadius(selectedAge) {
+                if(selectedAge == "Under 5") {
+                    circle.setRadius(rad_ab5)
+                }
+              }
+
+            // function markerRadius(selectedAge) {
+            //     // return selectedAge * 300000; 
+            //     if (selectedAge == "Under 5") {
+            //         circle.setRadius(rad_ab5, rad_db5);
+            //     }
+            //     if (selectedAge == "5-14") {
+            //         return rad_aa5, rad_da5;
+            //     }
+            //     if (selectedAge == "15-49") {
+            //         return rad_aa14, rad_da14;
+            //     }
+            //     if (selectedAge == "50-69") {
+            //         return rad_aa49, rad_da49;
+            //     }
+            //     if (selectedAge == "Over 70") {
+            //         return rad_aa69, rad_da69;
+            //     };
+            // };
+        }
+
         // // depression
         // var dData = L.layerGroup().addTo(mymap);
         // for (i = 0; i < latlong.length; i++) {
@@ -92,7 +127,7 @@ function loadmap() {
 
         var overlayMaps = {
             'Anxiety': aData,
-            'Depression': dData
+            // 'Depression': dData
         };
 
         // Create a control for our layers, add our overlay layers to it
@@ -136,46 +171,46 @@ function updateMap() {
             var selectedAge = d3.select(this).property("value")
             console.log(selectedAge); 
 
-            
-
-
+        
         // Anxiety results multiplied for marker radius
-        var rad_ab5 = data.map(elem => elem.A_below_5yo) * 30000;
-        var rad_aa5 = data.map(elem => elem.A_above_5yo) * 30000;
-        var rad_aa14 = data.map(elem => elem.A_above_14yo) * 30000;
-        var rad_aa49 = data.map(elem => elem.A_above_49yo) * 30000;
-        var rad_aa69 = data.map(elem => elem.A_above_69yo) * 30000;
+        var rad_ab5 = data.map(elem => elem.A_below_5yo) * 300000;
+        var rad_aa5 = data.map(elem => elem.A_above_5yo) * 300000;
+        var rad_aa14 = data.map(elem => elem.A_above_14yo) * 300000;
+        var rad_aa49 = data.map(elem => elem.A_above_49yo) * 300000;
+        var rad_aa69 = data.map(elem => elem.A_above_69yo) * 300000;
 
         // Depression results multiplied for marker radius
-        var rad_db5 = data.map(elem => elem.D_below_5yo) * 30000;
-        var rad_da5 = data.map(elem => elem.D_above_5yo) * 30000;
-        var rad_da14 = data.map(elem => elem.D_above_14yo) * 30000;
-        var rad_da49 = data.map(elem => elem.D_above_49yo) * 30000;
-        var rad_da69 = data.map(elem => elem.D_above_69yo) * 30000;
+        var rad_db5 = data.map(elem => elem.D_below_5yo) * 300000;
+        var rad_da5 = data.map(elem => elem.D_above_5yo) * 300000;
+        var rad_da14 = data.map(elem => elem.D_above_14yo) * 300000;
+        var rad_da49 = data.map(elem => elem.D_above_49yo) * 300000;
+        var rad_da69 = data.map(elem => elem.D_above_69yo) * 300000;
 
         if (selectedAge == "5-14") {
             console.log(ab5);
             console.log(db5);
         } // working
 
-        function markerRadius(selectedAge) {
-            // return selectedAge * 30000; 
-            if (selectedAge == "Under 5") {
-                return rad_ab5, rad_db5;
-            }
-            if (selectedAge == "5-14") {
-                return rad_aa5, rad_da5;
-            }
-            if (selectedAge == "15-49") {
-                return rad_aa14, rad_da14;
-            }
-            if (selectedAge == "50-69") {
-                return rad_aa49, rad_da49;
-            }
-            if (selectedAge == "Over 70") {
-                return rad_aa69, rad_da69;
-            };
-        };
+        // var newRadius = L.circleMarker()
+
+        // function markerRadius(selectedAge) {
+        //     // return selectedAge * 30000; 
+        //     if (selectedAge == "Under 5") {
+        //         return rad_ab5, rad_db5;
+        //     }
+        //     if (selectedAge == "5-14") {
+        //         return rad_aa5, rad_da5;
+        //     }
+        //     if (selectedAge == "15-49") {
+        //         return rad_aa14, rad_da14;
+        //     }
+        //     if (selectedAge == "50-69") {
+        //         return rad_aa49, rad_da49;
+        //     }
+        //     if (selectedAge == "Over 70") {
+        //         return rad_aa69, rad_da69;
+        //     };
+        // };
     });
 });
 }
