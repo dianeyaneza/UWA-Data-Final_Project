@@ -1,3 +1,8 @@
+var container = L.DomUtil.get('map');
+if(container != null){
+container._leaflet_id = null;
+}
+
 function loadmap() {
 
     d3.json('/api_wmhdata').then(function(data) {
@@ -19,10 +24,13 @@ function loadmap() {
             Depression: new L.LayerGroup(),
         };
 
+        var mapcenter = [10.82, 21.80]
+        var mapzoom = [2.5]
+
         // map object with layers
         var mymap = L.map('map', {
-            center: [10.82, 21.80],
-            zoom: 2.5,
+            center: mapcenter,
+            zoom: mapzoom,
             layers: [
                 layers.Anxiety,
                 layers.Depression
@@ -53,19 +61,34 @@ function loadmap() {
         // anxiety
         var aData = L.layerGroup().addTo(mymap);
         for (i = 0; i < latlong.length; i++) {
-            circle = L.circle([latlong[i][0], latlong[i][1]]).bindPopup("entities");
+            circle = L.circle([latlong[i][0], latlong[i][1]]);
             aData.addLayer(circle);
         }
 
         // depression
         var dData = L.layerGroup().addTo(mymap);
         for (i = 0; i < latlong.length; i++) {
-            circle = L.circle([latlong[i][0], latlong[i][1], {
-                color: 'red',
-                radius: 500
-            }]);
+            circle = L.circle([latlong[i][0], latlong[i][1]]);
             dData.addLayer(circle);
         }
+
+        // testing marker radius *not working, disables layer control
+        // anxiety
+        // var aData = L.layerGroup().addTo(mymap);
+        // for (i = 0; i < latlong.length; i++) {
+        //     circle = L.circle([latlong[i][0], latlong[i][1]], {
+        //         radius: markerRadius(selectedAge)
+        //     });
+        //     aData.addLayer(circle);
+        // }
+        // // depression
+        // var dData = L.layerGroup().addTo(mymap);
+        // for (i = 0; i < latlong.length; i++) {
+        //     circle = L.circle([latlong[i][0], latlong[i][1]], {
+        //         radius: markerRadius(selectedAge)
+        //     });
+        //     dData.addLayer(circle);
+        // }
 
         var overlayMaps = {
             'Anxiety': aData,
@@ -78,7 +101,10 @@ function loadmap() {
         L.layerGroup().addTo(mymap);
     });
 
+    updateMap();
 };
+
+
 
 
 function updateMap() {
@@ -106,13 +132,12 @@ function updateMap() {
         var da49 = data.map(elem => elem.D_above_49yo);
         var da69 = data.map(elem => elem.D_above_69yo);
 
-        // if (selectedAge == "5-14") {
-        //     console.log(ab5);
-        //     console.log(db5);
-        // } // working
+        if (selectedAge == "5-14") {
+            console.log(ab5);
+            console.log(db5);
+        } // working
 
-
-        function getRadius(selectedAge) {
+        function markerRadius(selectedAge) {
             // return selectedAge * 30000; 
             if (selectedAge == "Under 5") {
                 return ab5 * 30000, db5 * 30000;
@@ -131,8 +156,45 @@ function updateMap() {
             };
             
         };
-        // console.log(selectedAge);
+
+        // // Select country id 
+        var country_entered = d3.select("#country");
+
+        // Create event handlers
+        country_entered.on("keypress", runEnter);
+
+        function runEnter() {
+            console.log("hello")
+        };
+
+        if(d3.event.keyCode === 13) {
+            console.log("Congrats, you pressed enter");
+        };
     });
 });
 }
 loadmap()
+
+        // // key code = 13 (ENTER), key code = 32 (SPACE)
+        // if(d3.event.keyCode === 13) {
+        //     console.log("Congrats, you pressed enter")
+
+        //     // Prevent the page from refreshing
+        //     d3.event.preventDefault();
+
+        //     // Select the id show 
+        //     var show_entered = d3.select("#show");
+
+        //     //Get the value property of the input element
+        //     var inputValue = show_entered.property("value");
+        //     console.log(inputValue);
+
+        //     // Enter in code to filter and match and print table
+        //     tbody.html("");
+
+        //     d3.json('/api_events').then((data) => {
+        //     console.log(data);
+        //     var allData = data;
+        
+    
+        

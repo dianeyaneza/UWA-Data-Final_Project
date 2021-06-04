@@ -58,7 +58,6 @@ function createMap() {
     L.control.layers(overlayMaps).addTo(mymap);
 
 });
-=======
 }
 
 createMap()
