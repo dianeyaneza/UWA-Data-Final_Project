@@ -43,13 +43,13 @@
                     <br><br>
                     <label for="name">How are you?</label><br>
                     <div class="btn-group">
-                        <button type="button" class="btn-default">Feeling calm</button>
-                        <button type="button" class="btn-default">A bit tense</button>
+                        <button type="button" class="btn-default" onclick="calm()">Feeling calm</button>
+                        <button type="button" class="btn-default" onclick="tense()">A bit tense</button>
                     </div>
                     <br><br>
                     <div class="btn-group">
-                        <button type="button" class="btn-default">Pretty happy</button>
-                        <button type="button" class="btn-default">A little down</button>
+                        <button type="button" class="btn-default" onclick="happy()">Pretty happy</button>
+                        <button type="button" class="btn-default"onclick="sad()">A little down</button>
                     </div>
                 </form>
             </div>
@@ -73,13 +73,13 @@
                 <div class="container">
                     <div class="row row-cols-2">
                       <div class="col"><font color="white">Country</font></div>
-                      <div class="col" id="country-result"><font color="white"></font></div>
+                      <div class="col"><font color="white"><p id="country-result"></p></font></div>
                       <div class="col"><font color="white">Age</font></div>
-                      <div class="col" id="age-result"><font color="white"></font></div>
+                      <div class="col"><font color="white"><p id="age-result"></p></font></div>
                       <div class="col"><font color="white">Anxiety</font></div>
-                      <div class="col" id="anx-result"><font color="white"></font></div>
+                      <div class="col"><font color="white"><p id="anx-result"></p></font></div>
                       <div class="col"><font color="white">Depression</font></div>
-                      <div class="col" id="dep-result"><font color="white"></font></div>
+                      <div class="col"><font color="white"><p id="dep-result"></p></font></div>
                     </div>
                   </div>
             </div>

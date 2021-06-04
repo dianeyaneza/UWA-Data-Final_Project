@@ -16,3 +16,24 @@ function off() {
     document.getElementById("ResultsOverlay").style.display = "none";
 }
 
+var calmresponse = "Okay...";
+var tenseresponse = "Oh dear!"
+var happyresponse = "Alright!"
+var sadresponse = "Hang in there!"
+
+function calm() {
+    document.getElementById('anx-result').innerHTML = calmresponse;
+    console.log()
+}
+
+function tense() {
+    document.getElementById('anx-result').innerHTML = tenseresponse
+}
+
+function happy() {
+    document.getElementById('dep-result').innerHTML = happyresponse
+}
+
+function sad() {
+    document.getElementById('dep-result').innerHTML = sadresponse
+}
