@@ -16,9 +16,10 @@ function off() {
     document.getElementById("ResultsOverlay").style.display = "none";
 }
 
-var calmresponse = "Okay...";
+
+var calmresponse = "Great!";
 var tenseresponse = "Oh dear!"
-var happyresponse = "Alright!"
+var happyresponse = "Yay!"
 var sadresponse = "Hang in there!"
 
 function calm() {
@@ -37,3 +38,4 @@ function happy() {
 function sad() {
     document.getElementById('dep-result').innerHTML = sadresponse
 }
+
