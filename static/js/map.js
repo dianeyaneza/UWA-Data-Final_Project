@@ -110,13 +110,23 @@ function updateMap() {
         // console.log(data);
         var data = data;
 
-        // Event listener for country
-        const countryEntered = d3.select("#country").property("value");
-        console.log(countryEntered)
+        // countries
+        var entities = data.map(elem => elem.Entity);
+        // console.log(entities); 
+        // coordinates
+        var lat = data.map(elem => elem.latitude);
+        var long = data.map(elem => elem.longitude);
+        var latlong = lat.map(function(latitude, index){
+            return [latitude, long[index]];
+        });
 
-        if (countryEntered){
-            filteredData = filteredData.filter(row => row.Entity === countryEntered);
-        }
+        // Event listener for country
+        // const countryEntered = d3.select("#country").property("value");
+        // let newcountry = 
+
+        // if (countryEntered){
+        //     newcountry = filteredData.filter(row => row.Entity === countryEntered);
+        // }
         
         
 
