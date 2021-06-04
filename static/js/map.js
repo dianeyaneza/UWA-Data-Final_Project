@@ -24,8 +24,8 @@ function loadmap() {
             Depression: new L.LayerGroup(),
         };
 
-        var mapcenter = [10.82, 21.80]
-        var mapzoom = [2.5]
+        const mapcenter = [10.82, 21.80]
+        const mapzoom = [2.5]
 
         // map object with layers
         var mymap = L.map('map', {
@@ -105,12 +105,20 @@ function loadmap() {
 };
 
 
-
-
 function updateMap() {
     d3.json('/api_wmhdata').then(function(data) {
         // console.log(data);
         var data = data;
+
+        // Event listener for country
+        const countryEntered = d3.select("#country").property("value");
+        console.log(countryEntered)
+
+        if (countryEntered){
+            filteredData = filteredData.filter(row => row.Entity === countryEntered);
+        }
+        
+        
 
         // Event listener for age dropdown selection 
         var ageDropdown = d3.select("#selAge")
@@ -118,19 +126,22 @@ function updateMap() {
             var selectedAge = d3.select(this).property("value")
             console.log(selectedAge); 
 
-        // Anxiety results
-        var ab5 = data.map(elem => elem.A_below_5yo);
-        var aa5 = data.map(elem => elem.A_above_5yo);
-        var aa14 = data.map(elem => elem.A_above_14yo);
-        var aa49 = data.map(elem => elem.A_above_49yo);
-        var aa69 = data.map(elem => elem.A_above_69yo);
+            
 
-        // Depression results
-        var db5 = data.map(elem => elem.D_below_5yo);
-        var da5 = data.map(elem => elem.D_above_5yo);
-        var da14 = data.map(elem => elem.D_above_14yo);
-        var da49 = data.map(elem => elem.D_above_49yo);
-        var da69 = data.map(elem => elem.D_above_69yo);
+
+        // Anxiety results multiplied for marker radius
+        var rad_ab5 = data.map(elem => elem.A_below_5yo) * 30000;
+        var rad_aa5 = data.map(elem => elem.A_above_5yo) * 30000;
+        var rad_aa14 = data.map(elem => elem.A_above_14yo) * 30000;
+        var rad_aa49 = data.map(elem => elem.A_above_49yo) * 30000;
+        var rad_aa69 = data.map(elem => elem.A_above_69yo) * 30000;
+
+        // Depression results multiplied for marker radius
+        var rad_db5 = data.map(elem => elem.D_below_5yo) * 30000;
+        var rad_da5 = data.map(elem => elem.D_above_5yo) * 30000;
+        var rad_da14 = data.map(elem => elem.D_above_14yo) * 30000;
+        var rad_da49 = data.map(elem => elem.D_above_49yo) * 30000;
+        var rad_da69 = data.map(elem => elem.D_above_69yo) * 30000;
 
         if (selectedAge == "5-14") {
             console.log(ab5);
@@ -140,40 +151,27 @@ function updateMap() {
         function markerRadius(selectedAge) {
             // return selectedAge * 30000; 
             if (selectedAge == "Under 5") {
-                return ab5 * 30000, db5 * 30000;
+                return rad_ab5, rad_db5;
             }
             if (selectedAge == "5-14") {
-                return aa5 * 30000, da5 * 30000;
+                return rad_aa5, rad_da5;
             }
             if (selectedAge == "15-49") {
-                return aa14 * 30000, da14 * 30000;
+                return rad_aa14, rad_da14;
             }
             if (selectedAge == "50-69") {
-                return aa49 * 30000, da49 * 30000;
+                return rad_aa49, rad_da49;
             }
             if (selectedAge == "Over 70") {
-                return aa69 * 30000, da69 * 30000;
+                return rad_aa69, rad_da69;
             };
-            
-        };
-
-        // // Select country id 
-        var country_entered = d3.select("#country");
-
-        // Create event handlers
-        country_entered.on("keypress", runEnter);
-
-        function runEnter() {
-            console.log("hello")
-        };
-
-        if(d3.event.keyCode === 13) {
-            console.log("Congrats, you pressed enter");
         };
     });
 });
 }
 loadmap()
+
+
 
         // // key code = 13 (ENTER), key code = 32 (SPACE)
         // if(d3.event.keyCode === 13) {
