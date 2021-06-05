@@ -39,5 +39,5 @@ function sad() {
     document.getElementById('dep-result').innerHTML = sadresponse
 }
 
-function 
+
 

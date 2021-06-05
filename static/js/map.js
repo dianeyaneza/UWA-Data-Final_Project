@@ -240,4 +240,3 @@ loadmap()
         //     var allData = data;
         
     
-        
