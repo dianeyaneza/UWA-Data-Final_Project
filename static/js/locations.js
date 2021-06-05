@@ -71,7 +71,6 @@ function runZoomIn() {
     newZoomMap.addTo(mymap)
 };
 
-
 // Prevent the page from refreshing
 // d3.event.preventDefault();
 

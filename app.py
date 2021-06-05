@@ -52,9 +52,12 @@ def wmhdata():
     # engine = create_engine(f'postgresql://{rds_connection_string}')
     
     ### Option 2: For postgres users to enter in personal login details (if option1 does not work)
-    rds_connection_string = "postgres:309Malanday!@localhost:5432/whatdoyoumean_db"
-    engine = create_engine(f'postgresql://{rds_connection_string}')
+    # rds_connection_string = "postgres:309Malanday!@localhost:5432/whatdoyoumean_db"
+    # engine = create_engine(f'postgresql://{rds_connection_string}')
     
+    rds_connection_string = 'postgresql' + os.environ.get('DATABASE_URL', '')[8:]  
+    engine = create_engine(rds_connection_string)
+
     # Step 2. save data into a pandas variable using engine 
     wmhdata = pd.read_sql_table('whatdoyoumean_table', engine) 
 

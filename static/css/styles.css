@@ -206,8 +206,6 @@ table, th, td {
     margin-top: 30px;
 }
 
-
-
 .dropbtn {
     background-color: #f9f9f9;
     color: rgb(235, 58, 27);
@@ -232,8 +230,6 @@ table, th, td {
     color: #f9f9f9;
 }
 
-
-
 .btn-default {
     color: #f9f9f9;
     background-color: rgb(235, 58, 27);
@@ -252,7 +248,6 @@ table, th, td {
     border-color: rgb(30, 30, 30);
 }
 
-
 .dropdown-content {
     display: none;
     position: absolute;
@@ -270,10 +265,6 @@ table, th, td {
     text-decoration: none;
     display: block;
 }
-
-/* .dropdown-content a:hover {
-    background-color: #777
-} */
 
 .dropdown:hover .dropdown-content {
     display: block;
